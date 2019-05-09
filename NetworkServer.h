@@ -20,9 +20,13 @@ class NetworkServer{
     int id_generator;
 
 public:
-    explicit NetworkServer();
-    int connect(SharedEditor* sharedEditor);
-    void disconnect(SharedEditor* sharedEditor);
+     ~NetworkServer();
+     NetworkServer(NetworkServer& networkServer);
+     explicit NetworkServer();
+     int connect(SharedEditor* sharedEditor);
+     void disconnect(SharedEditor* sharedEditor);
+     void send(const Message& message);
+     void dispatchMessage();
 };
 
 #endif //TEST_NETWORKSERVER_H

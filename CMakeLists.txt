@@ -3,4 +3,4 @@ project(test)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(test main.cpp NetworkServer.h SharedEditor.h SharedEditor.cpp NetworkServer.cpp Message.cpp Message.h)
+add_executable(test main.cpp NetworkServer.h SharedEditor.h SharedEditor.cpp NetworkServer.cpp Message.cpp Message.h Symbol.cpp Symbol.h)

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/merkm/CLionProjects/test/Symbol.cpp
+Symbol.h
+C:/Users/merkm/CLionProjects/test/Symbol.h
+
+C:/Users/merkm/CLionProjects/test/Symbol.h
+vector
+-
+
