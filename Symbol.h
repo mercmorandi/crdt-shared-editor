@@ -11,16 +11,25 @@ class Symbol {
     struct Id{
         int client_id;
         int prog_numb;
-    }id;
+    }id{};
 
-    char symbol;
+    char symbol{};
 
     std::vector<int> pos;
 
 public:
-
-    Symbol(int client_id, int prog_numb, char symbol, int pos);
+    Symbol(int client_id, int prog_numb, char symbol);
+    Symbol();
     bool operator< (const Symbol &symbol);
+
+    const Id &getId() const;
+
+    char getSymbol() const;
+
+    void setPos(const std::vector<int> &pos);
+
+    const std::vector<int> &getPos() const;
+
 
 };
 

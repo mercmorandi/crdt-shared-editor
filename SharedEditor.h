@@ -20,9 +20,13 @@ public:
     explicit SharedEditor(const NetworkServer& m);
     SharedEditor(SharedEditor& sharedEditor);
     SharedEditor(SharedEditor* & sharedEditor);
-   // bool operator==(const SharedEditor &other);
+     //bool operator==(const SharedEditor &other);
 
    void localInsert(int index, char value);
+   void localErase(int index);
+
+protected:
+    void initSymbols();
 
 };
 

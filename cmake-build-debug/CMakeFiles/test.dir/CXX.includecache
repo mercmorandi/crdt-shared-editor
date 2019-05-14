@@ -6,7 +6,35 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/merkm/CLionProjects/test/Symbol.cpp
+C:/Users/merkm/CLionProjects/test/Message.h
+
+C:/Users/merkm/CLionProjects/test/NetworkServer.h
+vector
+-
+queue
+-
+memory
+C:/Users/merkm/CLionProjects/test/memory
+SharedEditor.h
+C:/Users/merkm/CLionProjects/test/SharedEditor.h
+Message.h
+C:/Users/merkm/CLionProjects/test/Message.h
+
+C:/Users/merkm/CLionProjects/test/SharedEditor.cpp
+algorithm
+-
+random
+-
+ctime
+-
+SharedEditor.h
+C:/Users/merkm/CLionProjects/test/SharedEditor.h
+NetworkServer.h
+C:/Users/merkm/CLionProjects/test/NetworkServer.h
+
+C:/Users/merkm/CLionProjects/test/SharedEditor.h
+memory
+-
 Symbol.h
 C:/Users/merkm/CLionProjects/test/Symbol.h
 
