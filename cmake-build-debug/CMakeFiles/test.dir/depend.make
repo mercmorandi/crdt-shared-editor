@@ -3,6 +3,7 @@
 
 CMakeFiles/test.dir/Message.cpp.obj: ../Message.cpp
 CMakeFiles/test.dir/Message.cpp.obj: ../Message.h
+CMakeFiles/test.dir/Message.cpp.obj: ../Symbol.h
 
 CMakeFiles/test.dir/NetworkServer.cpp.obj: ../Message.h
 CMakeFiles/test.dir/NetworkServer.cpp.obj: ../NetworkServer.cpp

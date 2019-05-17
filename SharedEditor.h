@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "Symbol.h"
+#include "Message.h"
 
 class NetworkServer;
 
@@ -16,6 +17,7 @@ class SharedEditor {
     int _siteId;
     int prog_numb = 0;
     std::vector<Symbol> _symbols;
+    int _counter = 0;
 public:
     explicit SharedEditor(const NetworkServer& m);
     SharedEditor(SharedEditor& sharedEditor);
@@ -24,6 +26,10 @@ public:
 
    void localInsert(int index, char value);
    void localErase(int index);
+   void process(const Message &message);
+   std::string to_string();
+    int getSiteId() const;
+
 
 protected:
     void initSymbols();

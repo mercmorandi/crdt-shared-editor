@@ -10,7 +10,7 @@ class Symbol {
 
     struct Id{
         int client_id;
-        int prog_numb;
+        int _count;
     }id{};
 
     char symbol{};
@@ -20,7 +20,9 @@ class Symbol {
 public:
     Symbol(int client_id, int prog_numb, char symbol);
     Symbol();
+    Symbol(const Symbol& symbol); //copy constructor
     bool operator< (const Symbol &symbol);
+    bool operator== (const Symbol &symbol);
 
     const Id &getId() const;
 

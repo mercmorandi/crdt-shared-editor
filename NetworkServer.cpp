@@ -37,7 +37,15 @@ void NetworkServer::send(const Message &m) {
 }
 
 void NetworkServer::dispatchMessage() {
-
+    //TODO check if there are 2 or more insert at the same position if yes shift by one the local insert index of the more recent one
+    while(!this->queue.empty()){
+        Message m = queue.front();
+        for(const auto& sh : this->editors){
+            if(sh.get()->getSiteId() != m.getSiteIdSender())
+                sh.get()->process(m);
+        }
+        this->queue.pop();
+    }
 }
 
 NetworkServer::~NetworkServer() = default;

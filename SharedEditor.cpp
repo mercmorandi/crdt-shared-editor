@@ -139,7 +139,7 @@ std::vector<int> generateBetween(std::vector<int> previous, std::vector<int> nex
             newPos.assign(previous.begin(),previous.end()-1);
             //std::uniform_int_distribution<int> dist(*previous.end()+1,*next.end()-1);
             //int lastCurrent = dist(rd);
-            int lastCurrent = (std::rand()%*next.end()-1)+*previous.end()+1;
+            //int lastCurrent = (std::rand()%*next.end()-1)+*previous.end()+1;
             newPos.push_back(*previous.end()+1);
             return newPos;
         }
@@ -154,40 +154,39 @@ std::vector<int> generateBetween(std::vector<int> previous, std::vector<int> nex
 
 //NB need to add index++ in order to manage index 0
 void SharedEditor::localInsert(int index, char value) {
-    //&& index <= this->_symbols.size()
      int indexModified = index + 1;
      int size = this->_symbols.size();
+     Symbol symbolToSend;
     if (indexModified  >= this->_symbols.size()){
         std::vector<int> pos;
         pos.push_back(indexModified);
         this->_symbols.emplace_back(this->_siteId,this->prog_numb,value);
         this->_symbols.back().setPos(pos);
+        symbolToSend = this->_symbols.back();
         std::sort(this->_symbols.begin(),this->_symbols.end());
+
     }
     else
     {
-        /*std::vector<int> prev = this->_symbols[indexModified-1].getPos();
-        auto itPrev = prev.begin();
-        std::vector<int> next = this->_symbols[indexModified].getPos();
-        auto itNext = next.begin();
-
-        std::vector<int> newPos;
-        newPos = generatePositionRec(itPrev, this->_symbols[indexModified-1].getPos(), this->_symbols[indexModified].getPos(), itNext, value,
-                                     (std::vector<int> &) newPos);
-        this->_symbols.emplace_back(this->_siteId,this->prog_numb,value);
-        this->_symbols.back().setPos(newPos);
-        std::sort(this->_symbols.begin(),this->_symbols.end());
-         */
         std::vector<int> newPos;
         newPos = generateBetween(this->_symbols[indexModified-1].getPos(),this->_symbols[indexModified].getPos());
         this->_symbols.emplace_back(this->_siteId,this->prog_numb,value);
         this->_symbols.back().setPos(newPos);
+        symbolToSend = this->_symbols.back();
         std::sort(this->_symbols.begin(),this->_symbols.end());
     }
+    this->prog_numb++;
+    Message m(true, symbolToSend,this->_siteId);
+    this->_server.send(m);
 }
 
 void SharedEditor::localErase(int index) {
-
+    //TODO CHECK IF THIS EDITOR HAS ALREADY DELETE THE SAME SYMBOL
+    Symbol symbolToSend = this->_symbols[index+1];
+    this->_symbols.erase(this->_symbols.begin()+index+1);
+    this->prog_numb++;
+    Message m(false, symbolToSend, this->_siteId);
+    this->_server.send(m);
 }
 
 void SharedEditor::initSymbols() {
@@ -196,6 +195,34 @@ void SharedEditor::initSymbols() {
     v.push_back(0);
     s.setPos(v);
     this->_symbols.push_back(s);
+}
+
+
+void SharedEditor::process(const Message &message) {
+    if(message.isInsert()){
+        //todo check if current editor has inserted same char at the same global pos
+        this->_symbols.push_back(message.getSymbol());
+        std::sort(this->_symbols.begin(),this->_symbols.end());
+    }
+    else //delete
+    {
+        auto it = std::find(this->_symbols.begin(),this->_symbols.end(),message.getSymbol());
+        if(it != this->_symbols.end()){
+            this->_symbols.erase(it);
+        }
+    }
+}
+
+int SharedEditor::getSiteId() const {
+    return _siteId;
+}
+
+std::string SharedEditor::to_string() {
+    std::string seq;
+  for(int i = 1; i < this->_symbols.size(); i++){
+      seq.push_back(this->_symbols[i].getSymbol());
+  }
+    return seq;
 }
 
 

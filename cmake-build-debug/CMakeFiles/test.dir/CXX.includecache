@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 C:/Users/merkm/CLionProjects/test/Message.h
+string
+-
+Symbol.h
+C:/Users/merkm/CLionProjects/test/Symbol.h
 
 C:/Users/merkm/CLionProjects/test/NetworkServer.h
 vector
@@ -20,25 +24,25 @@ C:/Users/merkm/CLionProjects/test/SharedEditor.h
 Message.h
 C:/Users/merkm/CLionProjects/test/Message.h
 
-C:/Users/merkm/CLionProjects/test/SharedEditor.cpp
-algorithm
--
-random
--
-ctime
--
-SharedEditor.h
-C:/Users/merkm/CLionProjects/test/SharedEditor.h
-NetworkServer.h
-C:/Users/merkm/CLionProjects/test/NetworkServer.h
-
 C:/Users/merkm/CLionProjects/test/SharedEditor.h
 memory
 -
 Symbol.h
 C:/Users/merkm/CLionProjects/test/Symbol.h
+Message.h
+C:/Users/merkm/CLionProjects/test/Message.h
 
 C:/Users/merkm/CLionProjects/test/Symbol.h
 vector
+-
+
+C:/Users/merkm/CLionProjects/test/main.cpp
+iostream
+-
+NetworkServer.h
+C:/Users/merkm/CLionProjects/test/NetworkServer.h
+SharedEditor.h
+C:/Users/merkm/CLionProjects/test/SharedEditor.h
+chrono
 -
 
