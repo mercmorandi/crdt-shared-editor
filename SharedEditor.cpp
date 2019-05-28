@@ -225,6 +225,10 @@ std::string SharedEditor::to_string() {
     return seq;
 }
 
+SharedEditor::~SharedEditor() {
+    this->_server.disconnect(this);
+}
+
 
 
 /*bool SharedEditor::operator==(const SharedEditor &other) {

@@ -12,14 +12,14 @@ NetworkServer::NetworkServer() {
 
 int NetworkServer::connect(SharedEditor *sharedEditor) {
     //auto ptr = std::shared_ptr<SharedEditor>(sharedEditor);
-    this->editors.push_back(std::shared_ptr<SharedEditor>(sharedEditor));
+    this->editors.push_back(sharedEditor);
     this->id_generator++;
     return this->id_generator;
 }
 
 void NetworkServer::disconnect(SharedEditor *sharedEditor) {
     //todo erase from vector editors disconnected
-    auto it = std::find(this->editors.begin(),this->editors.end(),std::shared_ptr<SharedEditor>(sharedEditor));
+    auto it = std::find(this->editors.begin(),this->editors.end(),sharedEditor);
     if(it != this->editors.end()){
         this->editors.erase(it);
         std::cout<<">>>> Editor Disconnected correctly"<<std::endl;
@@ -41,8 +41,8 @@ void NetworkServer::dispatchMessage() {
     while(!this->queue.empty()){
         Message m = queue.front();
         for(const auto& sh : this->editors){
-            if(sh.get()->getSiteId() != m.getSiteIdSender())
-                sh.get()->process(m);
+            if(sh->getSiteId() != m.getSiteIdSender())
+                sh->process(m);
         }
         this->queue.pop();
     }

@@ -15,7 +15,7 @@
 class NetworkServer{
 
     //std::vector<std::unique_ptr<SharedEditor>> editors;
-    std::vector<std::shared_ptr<SharedEditor>> editors;
+    std::vector<SharedEditor*> editors;
     std::queue<Message> queue;
     int id_generator;
 

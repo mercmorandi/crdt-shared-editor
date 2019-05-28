@@ -23,8 +23,9 @@ public:
     SharedEditor(SharedEditor& sharedEditor);
     SharedEditor(SharedEditor* & sharedEditor);
      //bool operator==(const SharedEditor &other);
+     virtual ~SharedEditor();
 
-   void localInsert(int index, char value);
+    void localInsert(int index, char value);
    void localErase(int index);
    void process(const Message &message);
    std::string to_string();

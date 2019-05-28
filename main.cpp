@@ -16,8 +16,9 @@ int main() {
     std::cout<<"ed1: "<<ed1.to_string()<<std::endl;
     std::cout<<"ed2: "<<ed2.to_string()<<std::endl;
     ed1.localInsert(1,'h');
-    ed2.localErase(1);
-    ed1.localErase(1);
+    ed2.localInsert(1,'o');
+    //ed2.localErase(1);
+    //ed1.localErase(1);
     server.dispatchMessage();
     std::cout<<"ed1: "<<ed1.to_string()<<std::endl;
     std::cout<<"ed2: "<<ed2.to_string()<<std::endl;
